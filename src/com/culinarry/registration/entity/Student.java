@@ -1,66 +1,100 @@
 package com.culinarry.registration.entity;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
-
+@Entity
+@Table(name = "students")
 public class Student {
-    private String id;
-    private String name;
-    private Date registrationDate;
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Program> programs;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String firstName;
+
+    @Column(nullable = false)
+    private String lastName;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String phoneNumber;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Registration> registrations = new HashSet<>();
 
     public Student() {
     }
 
-    public Student(String id, String name, Date registrationDate, Set<Program> programs) {
+    public Student(Long id, String firstName, String lastName, String email, String phoneNumber, Set<Registration> registrations) {
         this.id = id;
-        this.name = name;
-        this.registrationDate = registrationDate;
-        this.programs = programs;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.registrations = registrations;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public Date getRegistrationDate() {
-        return registrationDate;
+    public String getLastName() {
+        return lastName;
     }
 
-    public Set<Program> getPrograms() {
-        return programs;
+    public String getEmail() {
+        return email;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
+    public Set<Registration> getRegistrations() {
+        return registrations;
+    }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
-        this.registrationDate = registrationDate;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setPrograms(Set<Program> programs) {
-        this.programs = programs;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setRegistrations(Set<Registration> registrations) {
+        this.registrations = registrations;
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", registrationDate=" + registrationDate +
-                ", programs=" + programs +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", registrations=" + registrations +
                 '}';
     }
 }

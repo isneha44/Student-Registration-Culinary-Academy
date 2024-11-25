@@ -7,10 +7,11 @@ import java.util.Date;
 public class AppInitializer {
     public static void main(String[] args) {
      Student student = new Student();
-     student.setId("CAP0001");
-     student.setName("Shashika Madushan");
-//     student.setPrograms(programs);
-     student.setRegistrationDate(new Date());
+     student.setFirstName("Shashika");
+     student.setLastName("Madushan");
+     student.setEmail("shashi@gmail.com");
+     student.setPhoneNumber("+947134789456");
+
 
      session.save(student);
 

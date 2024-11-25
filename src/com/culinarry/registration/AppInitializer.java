@@ -14,13 +14,24 @@ public class AppInitializer {
      student.setFirstName("Vihanga");
      student.setLastName("Samanala");
      student.setEmail("vihanga@gmail.com");
-     student.setPhoneNumber("+94745617997");
+     student.setPhoneNumber("+9474");
 
      Session session = FactoryConfiguration.getInstance().getSession();
 
      Transaction transaction = session.beginTransaction();
 
-     session.save(student);
+     // every codes and implementation start from here //
+
+//        To Save
+//        session.save(student);
+
+//        To Update
+//        student.setId(Long.valueOf("12"));
+//        session.update(student);
+
+//        To Get One Customer Object
+        Student student1 = session.get(Student.class, Long.valueOf(12));
+        System.out.println(student1);
 
      transaction.commit();
      session.close();

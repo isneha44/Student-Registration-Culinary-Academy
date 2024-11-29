@@ -19,8 +19,8 @@ public class FactoryConfiguration {
                 .addAnnotatedClass(Program.class)
                 .addAnnotatedClass(Registration.class)
                 .addAnnotatedClass(User.class);
-        
-        
+
+
         sessionFactory = configuration.buildSessionFactory();
 
     }

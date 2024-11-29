@@ -1,11 +1,13 @@
 package com.culinarry.registration.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "registrations")
-public class Registration {
+public class Registration implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,61 +20,63 @@ public class Registration {
     @JoinColumn(name = "program_id", nullable = false)
     private Program program;
 
-    @Column(nullable = false)
-    private LocalDate registrationDate;
+    @Column(name = "registration_date")
+    @Temporal(TemporalType.DATE)
+    private Date registrationDate;
 
-    @Column(nullable = false)
-    private Double paymentAmount;
+    @Column(name = "payment_status")
+    private String paymentStatus;
+
 
     public Registration() {
     }
 
-    public Registration(Long id, Student student, Program program, LocalDate registrationDate, Double paymentAmount) {
+    public Registration(Long id, Student student, Program program, Date registrationDate, String paymentStatus) {
         this.id = id;
         this.student = student;
         this.program = program;
         this.registrationDate = registrationDate;
-        this.paymentAmount = paymentAmount;
+        this.paymentStatus = paymentStatus;
     }
 
     public Long getId() {
         return id;
     }
 
-    public Student getStudent() {
-        return student;
-    }
-
-    public Program getProgram() {
-        return program;
-    }
-
-    public LocalDate getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public Double getPaymentAmount() {
-        return paymentAmount;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Student getStudent() {
+        return student;
     }
 
     public void setStudent(Student student) {
         this.student = student;
     }
 
+    public Program getProgram() {
+        return program;
+    }
+
     public void setProgram(Program program) {
         this.program = program;
     }
 
-    public void setRegistrationDate(LocalDate registrationDate) {
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
 
-    public void setPaymentAmount(Double paymentAmount) {
-        this.paymentAmount = paymentAmount;
+    public String getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
     }
 
     @Override
@@ -82,7 +86,7 @@ public class Registration {
                 ", student=" + student +
                 ", program=" + program +
                 ", registrationDate=" + registrationDate +
-                ", paymentAmount=" + paymentAmount +
+                ", paymentStatus='" + paymentStatus + '\'' +
                 '}';
     }
 }

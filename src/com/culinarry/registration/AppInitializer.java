@@ -1,5 +1,6 @@
 package com.culinarry.registration;
 
+import com.culinarry.registration.config.HibernateConfig;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -67,10 +68,10 @@ public class AppInitializer  extends Application {
      primaryStage.show();
  }
 
-//    @Override
-//    public void stop() {
-//        // Shutdown Hibernate session factory when application closes
-//        HibernateConfig.shutdown();
-//    }
+    @Override
+    public void stop() {
+        // Shutdown Hibernate session factory when application closes
+        HibernateConfig.shutdown();
+    }
 
 }

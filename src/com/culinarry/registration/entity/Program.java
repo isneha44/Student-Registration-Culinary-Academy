@@ -1,7 +1,5 @@
 package com.culinarry.registration.entity;
 
-import com.culinarry.registration.entity.Student;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;

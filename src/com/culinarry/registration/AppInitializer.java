@@ -2,12 +2,17 @@ package com.culinarry.registration;
 
 import com.culinarry.registration.entity.Student;
 import com.culinarry.registration.util.FactoryConfiguration;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.Date;
 
-public class AppInitializer {
+public class AppInitializer  extends Application {
     public static void main(String[] args) {
      Student student = new Student();
      student.setId(student.getId());
@@ -57,5 +62,13 @@ public class AppInitializer {
      session.close();
 
     }
+
+ @Override
+ public void start(Stage primaryStage) throws Exception {
+  Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+  primaryStage.setTitle("Culinary Academy Management System");
+  primaryStage.setScene(new Scene(root));
+  primaryStage.show();
+ }
 
 }

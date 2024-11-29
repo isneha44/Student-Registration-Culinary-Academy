@@ -14,7 +14,11 @@ public class FactoryConfiguration {
 
 
     private FactoryConfiguration() {
-        Configuration configuration = new Configuration().configure().addAnnotatedClass(Student.class).addAnnotatedClass(Program.class).addAnnotatedClass(Registration.class).addAnnotatedClass(User.class);
+        Configuration configuration = new Configuration().configure()
+                .addAnnotatedClass(Student.class)
+                .addAnnotatedClass(Program.class)
+                .addAnnotatedClass(Registration.class)
+                .addAnnotatedClass(User.class);
         
         
         sessionFactory = configuration.buildSessionFactory();

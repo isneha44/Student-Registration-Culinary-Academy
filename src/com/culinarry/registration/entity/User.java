@@ -2,6 +2,7 @@ package com.culinarry.registration.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -82,5 +83,12 @@ public class User implements Serializable {
                 ", role='" + role + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public void setCreatedAt(LocalDateTime now) {
+//        // Only allow setting the created_at timestamp if it hasn't been set before
+//        if (this.createdAt == null) {
+//            this.createdAt = now;
+//        }
     }
 }

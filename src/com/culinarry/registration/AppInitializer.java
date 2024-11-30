@@ -62,7 +62,7 @@ public class AppInitializer  extends Application {
  @Override
  public void start(Stage primaryStage) throws Exception {
      // Load login screen
-     Parent root = FXMLLoader.load(getClass().getResource("view/Login.fxml"));
+     Parent root = FXMLLoader.load(getClass().getResource("view/Registration.fxml"));
      primaryStage.setTitle("Culinary Academy Management System");
      primaryStage.setScene(new Scene(root, 800, 600));
      primaryStage.show();

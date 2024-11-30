@@ -53,4 +53,8 @@ public class UserDAO {
             e.printStackTrace();
         }
     }
+
+    public boolean createUser(User newUser) {
+        return true;
+    }
 }

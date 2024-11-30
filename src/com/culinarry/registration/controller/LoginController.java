@@ -37,10 +37,10 @@ public class LoginController {
         if (authenticatedUser != null) {
             // Redirect based on user role
             switch (authenticatedUser.getRole()) {
-                case ADMIN:
+                case "ADMIN":
                     loadAdminDashboard();
                     break;
-                case COORDINATOR:
+                case "COORDINATOR":
                     loadCoordinatorDashboard();
                     break;
                 default:

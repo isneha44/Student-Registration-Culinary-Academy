@@ -23,7 +23,7 @@ public class HibernateConfig {
             try {
                 // Load properties from hibernate.properties
                 Properties properties = new Properties();
-                properties.load(new FileInputStream(new File("/resources/hibernate.properties")));
+                properties.load(new FileInputStream(new File("src/com/culinarry/registration/resources/hibernate.properties")));
 
                 Configuration configuration = new Configuration();
                 configuration.setProperties(properties);
